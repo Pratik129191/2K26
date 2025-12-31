@@ -1,0 +1,252 @@
+:root{
+  --ivory:#f7f6f3;
+  --pearl:#eae7e1;
+  --ink:#2b2b2b;
+  --muted-gold:#c6b27a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:"Inter",sans-serif;
+  background:
+    radial-gradient(circle at top,#0b1020,#02030a);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* STARS */
+.stars{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(#ffffff44 1px,transparent 1px);
+  background-size:180px 180px;
+  opacity:.25;
+  pointer-events:none;
+}
+
+/* LINEN TEXTURE */
+.linen-overlay{
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='rgba(255,255,255,0.02)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+
+/* AMBIENT LIGHT */
+.ambient-light{
+  position:fixed;
+  inset:-30%;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.08),transparent 60%);
+  animation:breath 18s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes breath{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+}
+
+/* HERO */
+.hero{
+  height:50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero-inner{
+  max-width:900px;
+  padding:20px;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  color:var(--ivory);
+  letter-spacing:1px;
+}
+
+.hero-sub{
+  margin-top:18px;
+  font-weight:500;
+  color:#dcd8cf;
+}
+
+/* LETTER */
+.letter{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:120px 20px;
+}
+
+.paper-card{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.78));
+  max-width:720px;
+  padding:55px;
+  border-radius:18px;
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
+  line-height:1.9;
+}
+
+.salutation{
+  margin-bottom:20px;
+}
+
+.paper-card p{
+  margin-bottom:18px;
+  font-size:1.05rem;
+}
+
+/* SIGNATURE */
+.signature{
+  margin-top:35px;
+  color:#555;
+}
+
+.signature-text {
+  margin-top: 40px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.signature-name {
+  font-family: "Allura", cursive;
+  font-size: 2.6rem;
+  color: var(--muted-gold);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+
+.handwritten{
+  font-family:"Allura",cursive;
+  font-size:2.2rem;
+  color:var(--muted-gold);
+  margin-top:5px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  color:#aaa;
+  font-size:.85rem;
+}
+
+/* ANIMATIONS */
+.fade-in{
+  opacity:0;
+  animation:fadeIn 2.5s ease forwards;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* TIMER SECTION */
+.timer-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px 80px; /* reduced top padding */
+  margin-top: 0px;       /* gently pulls card upward */
+}
+
+
+.timer-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.12),
+    rgba(255,255,255,0.06)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 35px 50px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  text-align: center;
+}
+
+.timer-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: var(--ivory);
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+
+/* TIMER */
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.time-box {
+  min-width: 80px;
+}
+
+.time-box span {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  color: var(--muted-gold);
+}
+
+.time-box label {
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+  color: #dcd8cf;
+  text-transform: uppercase;
+}
+
+.divider {
+  color: rgba(255,255,255,0.4);
+  font-size: 1.6rem;
+  transform: translateY(-6px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .timer-card {
+    padding: 28px 30px;
+  }
+
+  .time-box span {
+    font-size: 2rem;
+  }
+}
+
+@keyframes fadeIn{
+  to{opacity:1}
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .paper-card{padding:40px}
+}
+
+@keyframes inkWrite {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
